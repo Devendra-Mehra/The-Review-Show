@@ -1,2 +1,3 @@
 rootProject.name='The Review Show'
 include ':app'
+include ':core'

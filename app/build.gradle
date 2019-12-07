@@ -28,29 +28,30 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation JetBrains.kotlinStdLib
+    api JetBrains.kotlinStdLib
     implementation AndroidX.appCompat
-    implementation AndroidX.annotations
-    implementation AndroidX.androidKtx
+    api AndroidX.annotations
+    api AndroidX.androidKtx
     implementation Google.material
     implementation AndroidX.constraintLayout
-    implementation Google.daggerAndroid
+    api Google.daggerAndroid
     kapt Google.daggerCompiler
     kapt Google.daggerAndroidProcessor
-    implementation Google.daggerAndroid
-    implementation Google.daggerAndroidSupport
+    api Google.daggerAndroid
+    api Google.daggerAndroidSupport
     implementation Gson.lib
 
-    implementation Square.okHttp
-    implementation Square.okHttpLoggingInterceptor
+    api Square.okHttp
+    api Square.okHttpLoggingInterceptor
 
-    implementation Square.retrofit
-    implementation Square.retrofitGson
-    implementation Square.retrofitRx
+    api Square.retrofit
+    api Square.retrofitGson
+    api Square.retrofitRx
 
-    implementation AndroidX.room
-    implementation AndroidX.roomCompiler
-    implementation AndroidX.roomRxJava2
+    api AndroidX.room
+    kapt AndroidX.roomCompiler
+    api AndroidX.roomRxJava2
 
-    implementation Square.picasso
+    api Square.picasso
+    implementation project(":core")
 }
