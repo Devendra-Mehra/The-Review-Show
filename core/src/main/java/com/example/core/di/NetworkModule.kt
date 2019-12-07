@@ -45,6 +45,6 @@ class NetworkModule {
     }
 
     object BaseUrl {
-        const val gitHube = "https://api.github.com/"
+        const val gitHube = "https://api.themoviedb.org/3/"
     }
 }
