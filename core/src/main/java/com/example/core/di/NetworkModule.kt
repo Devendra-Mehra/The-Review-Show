@@ -37,7 +37,7 @@ class NetworkModule {
         rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         okHttpClient: OkHttpClient
     ): Retrofit {
-        return Retrofit.Builder().baseUrl(BaseUrl.gitHube)
+        return Retrofit.Builder().baseUrl(BaseUrl.theMovieDb)
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(rxJava2CallAdapterFactory)
             .client(okHttpClient)
@@ -45,6 +45,6 @@ class NetworkModule {
     }
 
     object BaseUrl {
-        const val gitHube = "https://api.themoviedb.org/3/"
+        const val theMovieDb = "https://api.themoviedb.org/3/"
     }
 }

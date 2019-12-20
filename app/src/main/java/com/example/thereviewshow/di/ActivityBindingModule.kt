@@ -1,12 +1,12 @@
 package com.example.di
 
 
-import com.example.thereviewshow.MainActivity
+import com.example.thereviewshow.homescreen.ui.HomeScreenActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityBindingModule {
     @ContributesAndroidInjector
-    abstract fun mainActivity(): MainActivity
+    abstract fun homeScreenActivity(): HomeScreenActivity
 }
