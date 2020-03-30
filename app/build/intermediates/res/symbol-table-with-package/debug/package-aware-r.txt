@@ -1518,7 +1518,6 @@ id icon
 id icon_group
 id ifRoom
 id image
-id image_view
 id info
 id invisible
 id italic

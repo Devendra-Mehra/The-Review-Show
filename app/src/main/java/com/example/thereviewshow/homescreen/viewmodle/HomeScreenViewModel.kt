@@ -1,10 +1,11 @@
 package com.example.thereviewshow.homescreen.viewmodle
 
 import androidx.lifecycle.ViewModel
+import com.example.thereviewshow.util.StringHelper
 
-class HomeScreenViewModel : ViewModel() {
+class HomeScreenViewModel constructor(private val stringHelper: StringHelper) : ViewModel() {
 
 
-    fun getMyName(): String = "Devendra Mehra"
+    fun getAppName(): String = stringHelper.getAppName()
 
 }

@@ -5,7 +5,6 @@ import android.app.Application;
 import com.example.core.di.CoreComponent;
 import com.example.thereviewshow.application.TheReviewShowApplication;
 import com.example.thereviewshow.homescreen.ui.HomeScreenActivity;
-import com.example.thereviewshow.homescreen.ui.HomeScreenActivity_MembersInjector;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication_MembersInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -21,13 +20,11 @@ import javax.inject.Provider;
     "rawtypes"
 })
 public final class DaggerAppComponent implements AppComponent {
-  private final CoreComponent coreComponent;
-
   private Provider<ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory> homeScreenActivitySubcomponentFactoryProvider;
 
-  private DaggerAppComponent(CoreComponent coreComponentParam, Application application) {
-    this.coreComponent = coreComponentParam;
-    initialize(coreComponentParam, application);
+  private DaggerAppComponent(CoreComponent coreComponent, Application application) {
+
+    initialize(coreComponent, application);
   }
 
   public static AppComponent.Builder builder() {
@@ -42,7 +39,7 @@ public final class DaggerAppComponent implements AppComponent {
     return DispatchingAndroidInjector_Factory.newInstance(getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(), Collections.<String, Provider<AndroidInjector.Factory<?>>>emptyMap());}
 
   @SuppressWarnings("unchecked")
-  private void initialize(final CoreComponent coreComponentParam, final Application application) {
+  private void initialize(final CoreComponent coreComponent, final Application application) {
     this.homeScreenActivitySubcomponentFactoryProvider = new Provider<ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory>() {
       @Override
       public ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory get() {
@@ -105,7 +102,6 @@ public final class DaggerAppComponent implements AppComponent {
 
     private HomeScreenActivity injectHomeScreenActivity(HomeScreenActivity instance) {
       DaggerAppCompatActivity_MembersInjector.injectAndroidInjector(instance, DaggerAppComponent.this.getDispatchingAndroidInjectorOfObject());
-      HomeScreenActivity_MembersInjector.injectPicasso(instance, Preconditions.checkNotNull(DaggerAppComponent.this.coreComponent.picasso(), "Cannot return null from a non-@Nullable component method"));
       return instance;
     }
   }

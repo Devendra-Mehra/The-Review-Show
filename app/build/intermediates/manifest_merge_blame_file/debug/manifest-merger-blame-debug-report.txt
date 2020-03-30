@@ -60,24 +60,23 @@
 36-->[com.squareup.picasso:picasso:2.71828] /Users/user/.gradle/caches/transforms-2/files-2.1/2f48292e2dae9dd609140e26a97a06f5/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
 37            android:exported="false" />
 37-->[com.squareup.picasso:picasso:2.71828] /Users/user/.gradle/caches/transforms-2/files-2.1/2f48292e2dae9dd609140e26a97a06f5/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
-38
-39        <service
-39-->[androidx.room:room-runtime:2.2.0] /Users/user/.gradle/caches/transforms-2/files-2.1/e31455816b48c10f56cbbf05e329436e/room-runtime-2.2.0/AndroidManifest.xml:25:9-27:40
-40            android:name="androidx.room.MultiInstanceInvalidationService"
-40-->[androidx.room:room-runtime:2.2.0] /Users/user/.gradle/caches/transforms-2/files-2.1/e31455816b48c10f56cbbf05e329436e/room-runtime-2.2.0/AndroidManifest.xml:26:13-74
-41            android:exported="false" />
-41-->[androidx.room:room-runtime:2.2.0] /Users/user/.gradle/caches/transforms-2/files-2.1/e31455816b48c10f56cbbf05e329436e/room-runtime-2.2.0/AndroidManifest.xml:27:13-37
-42
-43        <provider
-43-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:23:9-27:43
-44            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-44-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:24:13-79
-45            android:authorities="com.example.thereviewshow.lifecycle-process"
-45-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:25:13-69
-46            android:exported="false"
-46-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:26:13-37
-47            android:multiprocess="true" />
-47-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:27:13-40
-48    </application>
-49
-50</manifest>
+38        <provider
+38-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:23:9-27:43
+39            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+39-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:24:13-79
+40            android:authorities="com.example.thereviewshow.lifecycle-process"
+40-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:25:13-69
+41            android:exported="false"
+41-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:26:13-37
+42            android:multiprocess="true" />
+42-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/user/.gradle/caches/transforms-2/files-2.1/431aee00b3393f9d8f7dd5bc5bcc9545/lifecycle-process-2.1.0/AndroidManifest.xml:27:13-40
+43
+44        <service
+44-->[androidx.room:room-runtime:2.2.0] /Users/user/.gradle/caches/transforms-2/files-2.1/e31455816b48c10f56cbbf05e329436e/room-runtime-2.2.0/AndroidManifest.xml:25:9-27:40
+45            android:name="androidx.room.MultiInstanceInvalidationService"
+45-->[androidx.room:room-runtime:2.2.0] /Users/user/.gradle/caches/transforms-2/files-2.1/e31455816b48c10f56cbbf05e329436e/room-runtime-2.2.0/AndroidManifest.xml:26:13-74
+46            android:exported="false" />
+46-->[androidx.room:room-runtime:2.2.0] /Users/user/.gradle/caches/transforms-2/files-2.1/e31455816b48c10f56cbbf05e329436e/room-runtime-2.2.0/AndroidManifest.xml:27:13-37
+47    </application>
+48
+49</manifest>

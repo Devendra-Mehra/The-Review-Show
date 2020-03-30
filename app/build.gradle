@@ -47,6 +47,8 @@ dependencies {
     api Square.retrofit
     api Square.picasso
     api Gson.lib
+    api AndroidX.lifeCycleExtensions
+
 
 
 }
