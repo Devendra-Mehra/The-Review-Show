@@ -1,6 +1,5 @@
 package com.example.core.di
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -13,18 +12,12 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-    @Provides
-    @Singleton
-    fun providesOkHttpCache(context: Context): Cache {
-        val cacheSize = 10 * 1024 * 1024 // 10 MB
-        return Cache(context.cacheDir, cacheSize.toLong())
-    }
+
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(cache: Cache): OkHttpClient {
+    fun providesOkHttpClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
-            .cache(cache)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
@@ -33,7 +26,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(gsonConverterFactory: GsonConverterFactory,
+    fun providesRetrofit(
+        gsonConverterFactory: GsonConverterFactory,
         rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         okHttpClient: OkHttpClient
     ): Retrofit {
@@ -42,6 +36,12 @@ class NetworkModule {
             .addCallAdapterFactory(rxJava2CallAdapterFactory)
             .client(okHttpClient)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesRxJavaCallAdapterFactory(): RxJava2CallAdapterFactory {
+        return RxJava2CallAdapterFactory.create()
     }
 
     object BaseUrl {

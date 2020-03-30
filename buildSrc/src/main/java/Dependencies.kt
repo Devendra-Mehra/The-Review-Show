@@ -61,3 +61,9 @@ object ReactiveX {
 object JetBrains {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin_version}"
 }
+
+
+object PlayServices {
+    const val vision = "com.google.android.gms:play-services-vision:${Versions.vision}"
+}
+

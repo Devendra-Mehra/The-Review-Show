@@ -53,6 +53,7 @@ dependencies {
     implementation AndroidX.roomRxJava2
 
     implementation Square.picasso
+    implementation AndroidX.lifeCycleExtensions
 
 
 }

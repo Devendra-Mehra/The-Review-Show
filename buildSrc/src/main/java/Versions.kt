@@ -18,4 +18,6 @@ object Versions {
     const val rx_android_version = "2.1.1"
     const val app_compat_version = "1.1.0"
     const val support_lib_version = "1.0.0"
+    const val vision = "19.0.0"
+
 }
