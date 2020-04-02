@@ -49,7 +49,7 @@ object Square {
         "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp_version}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
     const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
-    const val retrofitRx = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit_version}"
+    //const val retrofitRx = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit_version}"
     const val picasso = "com.squareup.picasso:picasso:${Versions.picasso_version}"
 }
 
@@ -60,10 +60,10 @@ object ReactiveX {
 
 object JetBrains {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin_version}"
+    const val coroutineCore =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_version}"
+    const val coroutineAndroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin_version}"
 }
 
-
-object PlayServices {
-    const val vision = "com.google.android.gms:play-services-vision:${Versions.vision}"
-}
 

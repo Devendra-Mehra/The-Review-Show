@@ -46,7 +46,6 @@ dependencies {
 
     implementation Square.retrofit
     implementation Square.retrofitGson
-    implementation Square.retrofitRx
 
     implementation AndroidX.room
     kapt AndroidX.roomCompiler

@@ -35,9 +35,6 @@ dependencies {
     implementation Google.material
     implementation AndroidX.constraintLayout
     api Google.daggerAndroid
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt Google.daggerCompiler
     kapt Google.daggerAndroidProcessor
     api Google.daggerAndroid
@@ -48,7 +45,5 @@ dependencies {
     api Square.picasso
     api Gson.lib
     api AndroidX.lifeCycleExtensions
-
-
 
 }

@@ -19,7 +19,6 @@ class HomeScreenActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-
     private val viewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory)
             .get(HomeScreenViewModel::class.java)
@@ -31,6 +30,5 @@ class HomeScreenActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
 
-        text.text = viewModel.getAppName()
     }
 }
