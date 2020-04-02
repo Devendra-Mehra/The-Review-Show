@@ -1,6 +1,6 @@
 package com.example.di;
 
-import com.example.thereviewshow.homescreen.ui.HomeScreenActivity;
+import com.example.thereviewshow.trending.ui.TrendingActivity;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
@@ -16,13 +16,13 @@ public abstract class ActivityBindingModule_HomeScreenActivity {
 
   @Binds
   @IntoMap
-  @ClassKey(HomeScreenActivity.class)
+  @ClassKey(TrendingActivity.class)
   abstract AndroidInjector.Factory<?> bindAndroidInjectorFactory(
       HomeScreenActivitySubcomponent.Factory builder);
 
   @Subcomponent
-  public interface HomeScreenActivitySubcomponent extends AndroidInjector<HomeScreenActivity> {
+  public interface HomeScreenActivitySubcomponent extends AndroidInjector<TrendingActivity> {
     @Subcomponent.Factory
-    interface Factory extends AndroidInjector.Factory<HomeScreenActivity> {}
+    interface Factory extends AndroidInjector.Factory<TrendingActivity> {}
   }
 }

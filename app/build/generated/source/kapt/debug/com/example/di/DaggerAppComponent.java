@@ -8,10 +8,10 @@ import com.example.core.di.CoreComponent;
 import com.example.thereviewshow.application.TheReviewShowApplication;
 import com.example.thereviewshow.di.ViewModelFactory;
 import com.example.thereviewshow.di.ViewModelFactory_Factory;
-import com.example.thereviewshow.homescreen.ui.HomeScreenActivity;
-import com.example.thereviewshow.homescreen.ui.HomeScreenActivity_MembersInjector;
-import com.example.thereviewshow.homescreen.viewmodle.HomeScreenViewModel;
-import com.example.thereviewshow.homescreen.viewmodle.HomeScreenViewModel_Factory;
+import com.example.thereviewshow.trending.ui.TrendingActivity;
+import com.example.thereviewshow.trending.ui.HomeScreenActivity_MembersInjector;
+import com.example.thereviewshow.trending.viewmodle.TrendingViewModel;
+import com.example.thereviewshow.trending.viewmodle.HomeScreenViewModel_Factory;
 import com.example.thereviewshow.util.StringHelper;
 import com.example.thereviewshow.util.StringHelper_Factory;
 import dagger.android.AndroidInjector;
@@ -40,7 +40,7 @@ public final class DaggerAppComponent implements AppComponent {
 
   private Provider<StringHelper> stringHelperProvider;
 
-  private Provider<HomeScreenViewModel> homeScreenViewModelProvider;
+  private Provider<TrendingViewModel> homeScreenViewModelProvider;
 
   private Provider<Map<Class<? extends ViewModel>, Provider<ViewModel>>> mapOfClassOfAndProviderOfViewModelProvider;
 
@@ -58,7 +58,7 @@ public final class DaggerAppComponent implements AppComponent {
 
   private Map<Class<?>, Provider<AndroidInjector.Factory<?>>> getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(
       ) {
-    return Collections.<Class<?>, Provider<AndroidInjector.Factory<?>>>singletonMap(HomeScreenActivity.class, (Provider) homeScreenActivitySubcomponentFactoryProvider);}
+    return Collections.<Class<?>, Provider<AndroidInjector.Factory<?>>>singletonMap(TrendingActivity.class, (Provider) homeScreenActivitySubcomponentFactoryProvider);}
 
   private DispatchingAndroidInjector<Object> getDispatchingAndroidInjectorOfObject() {
     return DispatchingAndroidInjector_Factory.newInstance(getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(), Collections.<String, Provider<AndroidInjector.Factory<?>>>emptyMap());}
@@ -75,7 +75,7 @@ public final class DaggerAppComponent implements AppComponent {
     this.provideContextProvider = AppModule_ProvideContextFactory.create(appModuleParam, applicationProvider);
     this.stringHelperProvider = StringHelper_Factory.create(provideContextProvider);
     this.homeScreenViewModelProvider = HomeScreenViewModel_Factory.create(stringHelperProvider);
-    this.mapOfClassOfAndProviderOfViewModelProvider = MapProviderFactory.<Class<? extends ViewModel>, ViewModel>builder(1).put(HomeScreenViewModel.class, (Provider) homeScreenViewModelProvider).build();
+    this.mapOfClassOfAndProviderOfViewModelProvider = MapProviderFactory.<Class<? extends ViewModel>, ViewModel>builder(1).put(TrendingViewModel.class, (Provider) homeScreenViewModelProvider).build();
     this.viewModelFactoryProvider = DoubleCheck.provider(ViewModelFactory_Factory.create(mapOfClassOfAndProviderOfViewModelProvider));
   }
 
@@ -117,22 +117,22 @@ public final class DaggerAppComponent implements AppComponent {
   private final class HomeScreenActivitySubcomponentFactory implements ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory {
     @Override
     public ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent create(
-        HomeScreenActivity arg0) {
+            TrendingActivity arg0) {
       Preconditions.checkNotNull(arg0);
       return new HomeScreenActivitySubcomponentImpl(arg0);
     }
   }
 
   private final class HomeScreenActivitySubcomponentImpl implements ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent {
-    private HomeScreenActivitySubcomponentImpl(HomeScreenActivity arg0) {
+    private HomeScreenActivitySubcomponentImpl(TrendingActivity arg0) {
 
     }
 
     @Override
-    public void inject(HomeScreenActivity arg0) {
+    public void inject(TrendingActivity arg0) {
       injectHomeScreenActivity(arg0);}
 
-    private HomeScreenActivity injectHomeScreenActivity(HomeScreenActivity instance) {
+    private TrendingActivity injectHomeScreenActivity(TrendingActivity instance) {
       DaggerAppCompatActivity_MembersInjector.injectAndroidInjector(instance, DaggerAppComponent.this.getDispatchingAndroidInjectorOfObject());
       HomeScreenActivity_MembersInjector.injectViewModelFactory(instance, DaggerAppComponent.this.viewModelFactoryProvider.get());
       return instance;
