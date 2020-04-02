@@ -2,14 +2,26 @@
 package com.example.di;
 
 import android.app.Application;
+import android.content.Context;
+import androidx.lifecycle.ViewModel;
 import com.example.core.di.CoreComponent;
 import com.example.thereviewshow.application.TheReviewShowApplication;
+import com.example.thereviewshow.di.ViewModelFactory;
+import com.example.thereviewshow.di.ViewModelFactory_Factory;
 import com.example.thereviewshow.homescreen.ui.HomeScreenActivity;
+import com.example.thereviewshow.homescreen.ui.HomeScreenActivity_MembersInjector;
+import com.example.thereviewshow.homescreen.viewmodle.HomeScreenViewModel;
+import com.example.thereviewshow.homescreen.viewmodle.HomeScreenViewModel_Factory;
+import com.example.thereviewshow.util.StringHelper;
+import com.example.thereviewshow.util.StringHelper_Factory;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication_MembersInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.DispatchingAndroidInjector_Factory;
 import dagger.android.support.DaggerAppCompatActivity_MembersInjector;
+import dagger.internal.DoubleCheck;
+import dagger.internal.InstanceFactory;
+import dagger.internal.MapProviderFactory;
 import dagger.internal.Preconditions;
 import java.util.Collections;
 import java.util.Map;
@@ -22,9 +34,22 @@ import javax.inject.Provider;
 public final class DaggerAppComponent implements AppComponent {
   private Provider<ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory> homeScreenActivitySubcomponentFactoryProvider;
 
-  private DaggerAppComponent(CoreComponent coreComponent, Application application) {
+  private Provider<Application> applicationProvider;
 
-    initialize(coreComponent, application);
+  private Provider<Context> provideContextProvider;
+
+  private Provider<StringHelper> stringHelperProvider;
+
+  private Provider<HomeScreenViewModel> homeScreenViewModelProvider;
+
+  private Provider<Map<Class<? extends ViewModel>, Provider<ViewModel>>> mapOfClassOfAndProviderOfViewModelProvider;
+
+  private Provider<ViewModelFactory> viewModelFactoryProvider;
+
+  private DaggerAppComponent(AppModule appModuleParam, CoreComponent coreComponent,
+      Application applicationParam) {
+
+    initialize(appModuleParam, coreComponent, applicationParam);
   }
 
   public static AppComponent.Builder builder() {
@@ -39,12 +64,19 @@ public final class DaggerAppComponent implements AppComponent {
     return DispatchingAndroidInjector_Factory.newInstance(getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(), Collections.<String, Provider<AndroidInjector.Factory<?>>>emptyMap());}
 
   @SuppressWarnings("unchecked")
-  private void initialize(final CoreComponent coreComponent, final Application application) {
+  private void initialize(final AppModule appModuleParam, final CoreComponent coreComponent,
+      final Application applicationParam) {
     this.homeScreenActivitySubcomponentFactoryProvider = new Provider<ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory>() {
       @Override
       public ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory get() {
         return new HomeScreenActivitySubcomponentFactory();}
     };
+    this.applicationProvider = InstanceFactory.create(applicationParam);
+    this.provideContextProvider = AppModule_ProvideContextFactory.create(appModuleParam, applicationProvider);
+    this.stringHelperProvider = StringHelper_Factory.create(provideContextProvider);
+    this.homeScreenViewModelProvider = HomeScreenViewModel_Factory.create(stringHelperProvider);
+    this.mapOfClassOfAndProviderOfViewModelProvider = MapProviderFactory.<Class<? extends ViewModel>, ViewModel>builder(1).put(HomeScreenViewModel.class, (Provider) homeScreenViewModelProvider).build();
+    this.viewModelFactoryProvider = DoubleCheck.provider(ViewModelFactory_Factory.create(mapOfClassOfAndProviderOfViewModelProvider));
   }
 
   @Override
@@ -78,7 +110,7 @@ public final class DaggerAppComponent implements AppComponent {
     public AppComponent build() {
       Preconditions.checkBuilderRequirement(application, Application.class);
       Preconditions.checkBuilderRequirement(coreComponent, CoreComponent.class);
-      return new DaggerAppComponent(coreComponent, application);
+      return new DaggerAppComponent(new AppModule(), coreComponent, application);
     }
   }
 
@@ -102,6 +134,7 @@ public final class DaggerAppComponent implements AppComponent {
 
     private HomeScreenActivity injectHomeScreenActivity(HomeScreenActivity instance) {
       DaggerAppCompatActivity_MembersInjector.injectAndroidInjector(instance, DaggerAppComponent.this.getDispatchingAndroidInjectorOfObject());
+      HomeScreenActivity_MembersInjector.injectViewModelFactory(instance, DaggerAppComponent.this.viewModelFactoryProvider.get());
       return instance;
     }
   }
