@@ -6,7 +6,6 @@ import dagger.internal.Preconditions;
 import javax.inject.Provider;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @SuppressWarnings({
@@ -18,35 +17,29 @@ public final class NetworkModule_ProvidesRetrofitFactory implements Factory<Retr
 
   private final Provider<GsonConverterFactory> gsonConverterFactoryProvider;
 
-  private final Provider<RxJava2CallAdapterFactory> rxJava2CallAdapterFactoryProvider;
-
   private final Provider<OkHttpClient> okHttpClientProvider;
 
   public NetworkModule_ProvidesRetrofitFactory(NetworkModule module,
       Provider<GsonConverterFactory> gsonConverterFactoryProvider,
-      Provider<RxJava2CallAdapterFactory> rxJava2CallAdapterFactoryProvider,
       Provider<OkHttpClient> okHttpClientProvider) {
     this.module = module;
     this.gsonConverterFactoryProvider = gsonConverterFactoryProvider;
-    this.rxJava2CallAdapterFactoryProvider = rxJava2CallAdapterFactoryProvider;
     this.okHttpClientProvider = okHttpClientProvider;
   }
 
   @Override
   public Retrofit get() {
-    return providesRetrofit(module, gsonConverterFactoryProvider.get(), rxJava2CallAdapterFactoryProvider.get(), okHttpClientProvider.get());
+    return providesRetrofit(module, gsonConverterFactoryProvider.get(), okHttpClientProvider.get());
   }
 
   public static NetworkModule_ProvidesRetrofitFactory create(NetworkModule module,
       Provider<GsonConverterFactory> gsonConverterFactoryProvider,
-      Provider<RxJava2CallAdapterFactory> rxJava2CallAdapterFactoryProvider,
       Provider<OkHttpClient> okHttpClientProvider) {
-    return new NetworkModule_ProvidesRetrofitFactory(module, gsonConverterFactoryProvider, rxJava2CallAdapterFactoryProvider, okHttpClientProvider);
+    return new NetworkModule_ProvidesRetrofitFactory(module, gsonConverterFactoryProvider, okHttpClientProvider);
   }
 
   public static Retrofit providesRetrofit(NetworkModule instance,
-      GsonConverterFactory gsonConverterFactory,
-      RxJava2CallAdapterFactory rxJava2CallAdapterFactory, OkHttpClient okHttpClient) {
-    return Preconditions.checkNotNull(instance.providesRetrofit(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient), "Cannot return null from a non-@Nullable @Provides method");
+      GsonConverterFactory gsonConverterFactory, OkHttpClient okHttpClient) {
+    return Preconditions.checkNotNull(instance.providesRetrofit(gsonConverterFactory, okHttpClient), "Cannot return null from a non-@Nullable @Provides method");
   }
 }

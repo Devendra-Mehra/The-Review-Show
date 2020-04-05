@@ -61,9 +61,9 @@ object ReactiveX {
 object JetBrains {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin_version}"
     const val coroutineCore =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_version}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine_core}"
     const val coroutineAndroid =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin_version}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine_android}"
 }
 
 

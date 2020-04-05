@@ -3,7 +3,9 @@ package com.example.core.di;
 
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
+import javax.inject.Provider;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 @SuppressWarnings({
     "unchecked",
@@ -12,20 +14,26 @@ import okhttp3.OkHttpClient;
 public final class NetworkModule_ProvidesOkHttpClientFactory implements Factory<OkHttpClient> {
   private final NetworkModule module;
 
-  public NetworkModule_ProvidesOkHttpClientFactory(NetworkModule module) {
+  private final Provider<HttpLoggingInterceptor> httpLoggingInterceptorProvider;
+
+  public NetworkModule_ProvidesOkHttpClientFactory(NetworkModule module,
+      Provider<HttpLoggingInterceptor> httpLoggingInterceptorProvider) {
     this.module = module;
+    this.httpLoggingInterceptorProvider = httpLoggingInterceptorProvider;
   }
 
   @Override
   public OkHttpClient get() {
-    return providesOkHttpClient(module);
+    return providesOkHttpClient(module, httpLoggingInterceptorProvider.get());
   }
 
-  public static NetworkModule_ProvidesOkHttpClientFactory create(NetworkModule module) {
-    return new NetworkModule_ProvidesOkHttpClientFactory(module);
+  public static NetworkModule_ProvidesOkHttpClientFactory create(NetworkModule module,
+      Provider<HttpLoggingInterceptor> httpLoggingInterceptorProvider) {
+    return new NetworkModule_ProvidesOkHttpClientFactory(module, httpLoggingInterceptorProvider);
   }
 
-  public static OkHttpClient providesOkHttpClient(NetworkModule instance) {
-    return Preconditions.checkNotNull(instance.providesOkHttpClient(), "Cannot return null from a non-@Nullable @Provides method");
+  public static OkHttpClient providesOkHttpClient(NetworkModule instance,
+      HttpLoggingInterceptor httpLoggingInterceptor) {
+    return Preconditions.checkNotNull(instance.providesOkHttpClient(httpLoggingInterceptor), "Cannot return null from a non-@Nullable @Provides method");
   }
 }

@@ -47,6 +47,9 @@ dependencies {
     implementation Square.retrofit
     implementation Square.retrofitGson
 
+    implementation JetBrains.coroutineCore
+    implementation JetBrains.coroutineAndroid
+
     implementation AndroidX.room
     kapt AndroidX.roomCompiler
     implementation AndroidX.roomRxJava2

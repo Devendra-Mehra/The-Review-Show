@@ -2,6 +2,7 @@ package com.example.thereviewshow.trending.model
 
 import com.example.core.di.utils.API_KEY
 import com.example.core.di.utils.NetworkResponse
+import kotlinx.coroutines.Deferred
 import retrofit2.http.POST
 import retrofit2.http.Path
 

@@ -18,4 +18,6 @@ object Versions {
     const val rx_android_version = "2.1.1"
     const val app_compat_version = "1.1.0"
     const val support_lib_version = "1.0.0"
+    const val coroutine_core = "1.3.5"
+    const val coroutine_android = "1.3.5"
 }

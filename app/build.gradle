@@ -46,5 +46,7 @@ dependencies {
     api Square.picasso
     api Gson.lib
     api AndroidX.lifeCycleExtensions
+    api JetBrains.coroutineCore
+    api JetBrains.coroutineAndroid
 
 }

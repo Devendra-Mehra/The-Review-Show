@@ -7,8 +7,8 @@ import dagger.internal.DoubleCheck;
 import dagger.internal.Preconditions;
 import javax.inject.Provider;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @SuppressWarnings({
@@ -22,7 +22,7 @@ public final class DaggerCoreComponent implements CoreComponent {
 
   private Provider<GsonConverterFactory> providesGsonConverterFactoryProvider;
 
-  private Provider<RxJava2CallAdapterFactory> providesRxJavaCallAdapterFactoryProvider;
+  private Provider<HttpLoggingInterceptor> providesLoggingInterceptorProvider;
 
   private Provider<OkHttpClient> providesOkHttpClientProvider;
 
@@ -44,9 +44,9 @@ public final class DaggerCoreComponent implements CoreComponent {
     this.providesContextProvider = DoubleCheck.provider(CoreModule_ProvidesContextFactory.create(coreModuleParam));
     this.providesPicassoProvider = DoubleCheck.provider(ImageModule_ProvidesPicassoFactory.create(imageModuleParam, providesContextProvider));
     this.providesGsonConverterFactoryProvider = DoubleCheck.provider(GsonModule_ProvidesGsonConverterFactoryFactory.create(gsonModuleParam));
-    this.providesRxJavaCallAdapterFactoryProvider = DoubleCheck.provider(NetworkModule_ProvidesRxJavaCallAdapterFactoryFactory.create(networkModuleParam));
-    this.providesOkHttpClientProvider = DoubleCheck.provider(NetworkModule_ProvidesOkHttpClientFactory.create(networkModuleParam));
-    this.providesRetrofitProvider = DoubleCheck.provider(NetworkModule_ProvidesRetrofitFactory.create(networkModuleParam, providesGsonConverterFactoryProvider, providesRxJavaCallAdapterFactoryProvider, providesOkHttpClientProvider));
+    this.providesLoggingInterceptorProvider = DoubleCheck.provider(NetworkModule_ProvidesLoggingInterceptorFactory.create(networkModuleParam));
+    this.providesOkHttpClientProvider = DoubleCheck.provider(NetworkModule_ProvidesOkHttpClientFactory.create(networkModuleParam, providesLoggingInterceptorProvider));
+    this.providesRetrofitProvider = DoubleCheck.provider(NetworkModule_ProvidesRetrofitFactory.create(networkModuleParam, providesGsonConverterFactoryProvider, providesOkHttpClientProvider));
   }
 
   @Override

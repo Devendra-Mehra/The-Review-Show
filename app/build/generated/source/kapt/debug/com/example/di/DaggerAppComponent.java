@@ -9,9 +9,9 @@ import com.example.thereviewshow.application.TheReviewShowApplication;
 import com.example.thereviewshow.di.ViewModelFactory;
 import com.example.thereviewshow.di.ViewModelFactory_Factory;
 import com.example.thereviewshow.trending.ui.TrendingActivity;
-import com.example.thereviewshow.trending.ui.HomeScreenActivity_MembersInjector;
+import com.example.thereviewshow.trending.ui.TrendingActivity_MembersInjector;
 import com.example.thereviewshow.trending.viewmodle.TrendingViewModel;
-import com.example.thereviewshow.trending.viewmodle.HomeScreenViewModel_Factory;
+import com.example.thereviewshow.trending.viewmodle.TrendingViewModel_Factory;
 import com.example.thereviewshow.util.StringHelper;
 import com.example.thereviewshow.util.StringHelper_Factory;
 import dagger.android.AndroidInjector;
@@ -32,7 +32,7 @@ import javax.inject.Provider;
     "rawtypes"
 })
 public final class DaggerAppComponent implements AppComponent {
-  private Provider<ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory> homeScreenActivitySubcomponentFactoryProvider;
+  private Provider<ActivityBindingModule_HomeTrendingActivity.TrendingActivitySubcomponent.Factory> trendingActivitySubcomponentFactoryProvider;
 
   private Provider<Application> applicationProvider;
 
@@ -40,7 +40,7 @@ public final class DaggerAppComponent implements AppComponent {
 
   private Provider<StringHelper> stringHelperProvider;
 
-  private Provider<TrendingViewModel> homeScreenViewModelProvider;
+  private Provider<TrendingViewModel> trendingViewModelProvider;
 
   private Provider<Map<Class<? extends ViewModel>, Provider<ViewModel>>> mapOfClassOfAndProviderOfViewModelProvider;
 
@@ -58,7 +58,7 @@ public final class DaggerAppComponent implements AppComponent {
 
   private Map<Class<?>, Provider<AndroidInjector.Factory<?>>> getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(
       ) {
-    return Collections.<Class<?>, Provider<AndroidInjector.Factory<?>>>singletonMap(TrendingActivity.class, (Provider) homeScreenActivitySubcomponentFactoryProvider);}
+    return Collections.<Class<?>, Provider<AndroidInjector.Factory<?>>>singletonMap(TrendingActivity.class, (Provider) trendingActivitySubcomponentFactoryProvider);}
 
   private DispatchingAndroidInjector<Object> getDispatchingAndroidInjectorOfObject() {
     return DispatchingAndroidInjector_Factory.newInstance(getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(), Collections.<String, Provider<AndroidInjector.Factory<?>>>emptyMap());}
@@ -66,16 +66,16 @@ public final class DaggerAppComponent implements AppComponent {
   @SuppressWarnings("unchecked")
   private void initialize(final AppModule appModuleParam, final CoreComponent coreComponent,
       final Application applicationParam) {
-    this.homeScreenActivitySubcomponentFactoryProvider = new Provider<ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory>() {
+    this.trendingActivitySubcomponentFactoryProvider = new Provider<ActivityBindingModule_HomeTrendingActivity.TrendingActivitySubcomponent.Factory>() {
       @Override
-      public ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory get() {
-        return new HomeScreenActivitySubcomponentFactory();}
+      public ActivityBindingModule_HomeTrendingActivity.TrendingActivitySubcomponent.Factory get() {
+        return new TrendingActivitySubcomponentFactory();}
     };
     this.applicationProvider = InstanceFactory.create(applicationParam);
     this.provideContextProvider = AppModule_ProvideContextFactory.create(appModuleParam, applicationProvider);
     this.stringHelperProvider = StringHelper_Factory.create(provideContextProvider);
-    this.homeScreenViewModelProvider = HomeScreenViewModel_Factory.create(stringHelperProvider);
-    this.mapOfClassOfAndProviderOfViewModelProvider = MapProviderFactory.<Class<? extends ViewModel>, ViewModel>builder(1).put(TrendingViewModel.class, (Provider) homeScreenViewModelProvider).build();
+    this.trendingViewModelProvider = TrendingViewModel_Factory.create(stringHelperProvider);
+    this.mapOfClassOfAndProviderOfViewModelProvider = MapProviderFactory.<Class<? extends ViewModel>, ViewModel>builder(1).put(TrendingViewModel.class, (Provider) trendingViewModelProvider).build();
     this.viewModelFactoryProvider = DoubleCheck.provider(ViewModelFactory_Factory.create(mapOfClassOfAndProviderOfViewModelProvider));
   }
 
@@ -114,27 +114,27 @@ public final class DaggerAppComponent implements AppComponent {
     }
   }
 
-  private final class HomeScreenActivitySubcomponentFactory implements ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent.Factory {
+  private final class TrendingActivitySubcomponentFactory implements ActivityBindingModule_HomeTrendingActivity.TrendingActivitySubcomponent.Factory {
     @Override
-    public ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent create(
-            TrendingActivity arg0) {
+    public ActivityBindingModule_HomeTrendingActivity.TrendingActivitySubcomponent create(
+        TrendingActivity arg0) {
       Preconditions.checkNotNull(arg0);
-      return new HomeScreenActivitySubcomponentImpl(arg0);
+      return new TrendingActivitySubcomponentImpl(arg0);
     }
   }
 
-  private final class HomeScreenActivitySubcomponentImpl implements ActivityBindingModule_HomeScreenActivity.HomeScreenActivitySubcomponent {
-    private HomeScreenActivitySubcomponentImpl(TrendingActivity arg0) {
+  private final class TrendingActivitySubcomponentImpl implements ActivityBindingModule_HomeTrendingActivity.TrendingActivitySubcomponent {
+    private TrendingActivitySubcomponentImpl(TrendingActivity arg0) {
 
     }
 
     @Override
     public void inject(TrendingActivity arg0) {
-      injectHomeScreenActivity(arg0);}
+      injectTrendingActivity(arg0);}
 
-    private TrendingActivity injectHomeScreenActivity(TrendingActivity instance) {
+    private TrendingActivity injectTrendingActivity(TrendingActivity instance) {
       DaggerAppCompatActivity_MembersInjector.injectAndroidInjector(instance, DaggerAppComponent.this.getDispatchingAndroidInjectorOfObject());
-      HomeScreenActivity_MembersInjector.injectViewModelFactory(instance, DaggerAppComponent.this.viewModelFactoryProvider.get());
+      TrendingActivity_MembersInjector.injectViewModelFactory(instance, DaggerAppComponent.this.viewModelFactoryProvider.get());
       return instance;
     }
   }
