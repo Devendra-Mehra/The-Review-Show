@@ -20,4 +20,6 @@ object Versions {
     const val support_lib_version = "1.0.0"
     const val coroutine_core = "1.3.5"
     const val coroutine_android = "1.3.5"
+    const val chuck = "1.1.0"
+
 }

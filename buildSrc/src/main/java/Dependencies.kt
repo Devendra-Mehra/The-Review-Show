@@ -66,4 +66,8 @@ object JetBrains {
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine_android}"
 }
 
+object ReadyStateSoftware {
+    const val chuck = "com.readystatesoftware.chuck:library:${Versions.chuck}"
+}
+
 

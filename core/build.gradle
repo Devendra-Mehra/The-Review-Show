@@ -57,5 +57,7 @@ dependencies {
     implementation Square.picasso
     implementation AndroidX.lifeCycleExtensions
 
+    implementation ReadyStateSoftware.chuck
+
 
 }

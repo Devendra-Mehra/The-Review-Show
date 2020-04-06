@@ -8,5 +8,5 @@ data class NetworkResponse<R>(
     @SerializedName("page") val page: Int? = null,
     @SerializedName("total_pages") val totalPages: Int? = null,
     @SerializedName("total_results") val totalResults: Int? = null,
-    @SerializedName("result") val results: List<R>? = null
+    @SerializedName("results") val results: List<R>? = null
 )
