@@ -4,7 +4,9 @@ object GradleClasspath {
 }
 
 object AndroidX {
-    // ViewModel and LiveData
+    // ViewModel
+    const val lifeCycleViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
     const val lifeCycleExtensions =
         "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle_version}"
     const val lifeCycleCompiler =

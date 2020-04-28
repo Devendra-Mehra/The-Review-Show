@@ -5,7 +5,7 @@ object Versions {
     const val kotlin_version = "1.3.70"
     const val ktx_version = "1.0.2"
     const val build_gradle_version = "3.5.3"
-    const val lifecycle_version = "2.1.0"
+    const val lifecycle_version = "2.2.0"
     const val room_version = "2.2.0"
     const val material_version = "1.1.0-beta01"
     const val constraint_layout_version = "1.1.0"
